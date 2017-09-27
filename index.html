@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Page Cage</title>
+<meta name="Keywords" content="extension">
+<meta name="Description" content="Cage">
+<meta name="author" content="F. Ruiz">
+<meta name="robots" content="index">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="passlok-touch-icon.png">
+<link rel="shortcut icon" type="image/x-icon" href="cage-16.png">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<div id="topBar">
+  <button class="cssbutton" id="clearBtn" value="clear" title="clear URL (alt-C, ctrl-opt-C)" accesskey="C"><b>C</b>lear</button>
+  <input type="text" id="pageURL">
+  <button class="cssbutton" id="loadBtn" value="load" title="load page (alt-L, ctrl-opt-L)" accesskey="L"><b>L</b>oad</button>
+  <button class="cssbutton" id="hideBtn" value="hide" title="toggle this bar (alt-H, ctrl-opt-H)" accesskey="H"><b>H</b>ide</button>
+  &nbsp;&nbsp;&nbsp;<span id="msgArea">Please enter the URL in the box and click Load. Click Hide to hide this bar.</span>
+</div>
+
+  <iframe seamless id="pageFrame" src="" border=0 frameborder=0 allowfullscreen></iframe>
+
+<script src="bodyscript.js"></script>
+</body>
+</html>
