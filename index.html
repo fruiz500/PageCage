@@ -19,14 +19,29 @@
 
 <body>
 <div id="topBar">
-  <button class="cssbutton" id="clearBtn" value="clear" title="clear URL (alt-C, ctrl-opt-C)" accesskey="C"><b>C</b>lear</button>
-  <input type="text" id="pageURL">
+  <button class="cssbutton" id="clearBtn" value="clear" title="clear URL (alt-R, ctrl-opt-R)" accesskey="R">Clea<b>R</b></button>
+  <input list="myApps" id="pageURL" title="Enter URL here" placeholder="Select app or enter URL">
+  <datalist id="myApps">
+    <option value="PassLok">
+    <option value="Learn PassLok">
+    <option value="SeeOnce">
+    <option value="URSA">
+    <option value="Image Stego">
+    <option value="Human Encryption">
+    <option value="PassLok Gen. Directory">
+  </datalist>
   <button class="cssbutton" id="loadBtn" value="load" title="load page (alt-L, ctrl-opt-L)" accesskey="L"><b>L</b>oad</button>
   <button class="cssbutton" id="hideBtn" value="hide" title="toggle this bar (alt-H, ctrl-opt-H)" accesskey="H"><b>H</b>ide</button>
+  <button class="cssbutton" id="helpBtn" value="help" title="click this if it isn't working (alt-P, ctrl-opt-P)" accesskey="P">Hel<b>P</b></button>
   &nbsp;&nbsp;&nbsp;<span id="msgArea">Please enter the URL in the box and click Load. Click Hide to hide this bar.</span>
+  <div id="helpText">
+  <p>Page Cage loads a web page into an iframe element in order to prevent other extensions from seeing anything typed into or produced by the page. Warning: this entails ignoring X-frame headers, which exposes the loaded page to clickjacking attacks.</p>
+  <p>The list in the box includes a number of web apps by the author of Page Cage, which can benefit from being loaded through this extension.</p>
+  <p>Sometimes a website may refuse to load. In this case, you may want to install the "Ignore X-Frame headers" extension, from which Page Cage has borrowed some code. This is the <a href="https://chrome.google.com/webstore/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe" target="_blank">link for Chrome</a>, and <a href="https://addons.mozilla.org/en-US/firefox/addon/ignore-x-frame-options-header/" target="_blank">for Firefox</a>.</p>
+  </div>
 </div>
 
-  <iframe seamless id="pageFrame" src="" border=0 frameborder=0 allowfullscreen></iframe>
+  <iframe seamless id="pageFrame" src="" border="none" margin=0 frameborder=0 allowfullscreen allow="microphone; camera"></iframe>
 
 <script src="bodyscript.js"></script>
 </body>
