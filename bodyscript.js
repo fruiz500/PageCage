@@ -1,6 +1,6 @@
 ﻿// initialize things
 window.onload = function() {
-
+	chrome.history.deleteUrl({url: location.href});
 
   //event listeners for buttons etc.
 	window.addEventListener('resize', pageResize);
@@ -16,28 +16,52 @@ window.onload = function() {
 	pageURL.addEventListener('keyup', function(event) {URLKeyup(event)}, false);
 	
 	pageURL.addEventListener('change',function(){
-		if(pageURL.value == "PassLok"){
-			pageURL.value = "passlok.com/app";
-			loadPage()
+		if(pageURL.value == "---Other Security Apps---"){
+			pageURL.value = '';
+			return
+		}else if(pageURL.value == "PassLok"){
+			pageURL.value = "passlok.com/app"
 		}else if(pageURL.value == "Learn PassLok"){
-			pageURL.value = "passlok.com/learn";
-			loadPage()
+			pageURL.value = "passlok.com/learn"
 		}else if(pageURL.value == "SeeOnce"){
-			pageURL.value = "passlok.com/seeonce";
-			loadPage()
+			pageURL.value = "passlok.com/seeonce"
 		}else if(pageURL.value == "URSA"){
-			pageURL.value = "passlok.com/ursa";
-			loadPage()
+			pageURL.value = "passlok.com/ursa"
 		}else if(pageURL.value == "Image Stego"){
-			pageURL.value = "passlok.com/stego";
-			loadPage()
+			pageURL.value = "passlok.com/stego"
 		}else if(pageURL.value == "Human Encryption"){	
-			pageURL.value = "passlok.com/human";
-			loadPage()
+			pageURL.value = "passlok.com/human"
 		}else if(pageURL.value == "PassLok Gen. Directory"){
-			pageURL.value = "passlok.com/lockdir";
-			loadPage()
+			pageURL.value = "passlok.com/lockdir"
+		}else if(pageURL.value == "---Secure Web Search---"){
+			pageURL.value = '';
+			return
+		}else if(pageURL.value == "DuckDuckGo"){
+			pageURL.value = "duckduckgo.com"
+		}else if(pageURL.value == "DisconnectMe"){
+			pageURL.value = "search.disconnect.me"
+		}else if(pageURL.value == "Gibiru (safe Google)"){
+			pageURL.value = "anonymous-gibiru.com"
+		}else if(pageURL.value == "StartPage"){
+			pageURL.value = "startpage.com"
+		}else if(pageURL.value == "FindX"){
+			pageURL.value = "findx.com"
+		}else if(pageURL.value == "Qwant"){
+			pageURL.value = "qwant.com"
+		}else if(pageURL.value == "SearX"){
+			pageURL.value = "searx.me"
+		}else if(pageURL.value == "Wolfram Alpha"){
+			pageURL.value = "wolframalpha.com"
+		}else if(pageURL.value == "GigaBlast"){
+			pageURL.value = "gigablast.com"
+		}else if(pageURL.value == "SwissCows"){	
+			pageURL.value = "swisscows.ch"
+		}else if(pageURL.value == "MetaGer"){
+			pageURL.value = "metager.de/en"
+		}else if(pageURL.value == "Oscobo"){	
+			pageURL.value = "oscobo.co.uk"
 		}
+		loadPage()
 	});
 	
 	pageFrame.addEventListener('load', function(){
@@ -64,17 +88,30 @@ chrome.webRequest.onHeadersReceived.addListener(
 //end of Ignore X-Frame headers code
 
 //to prevent the page from redirecting out
-window.addEventListener('beforeunload', function (e) {
+	window.addEventListener('beforeunload', function (e) {
   // Cancel the event
-  e.preventDefault();
+ 	 e.preventDefault();
   // Chrome requires returnValue to be set
-  e.returnValue = '';
-});
+ 	 e.returnValue = '';
+	});
+	
+	makePage();
 	
 	pageResize();
 	
 	pageURL.focus()
 
+}
+
+function makePage(){
+	if(location.hash && location.hash.match('http')){
+		pageURL.value = location.hash.slice(1);
+		loadPage()
+	}else{
+		pageFrame.src = "default.html"
+	}
+	pageURL.value = '';
+	pageURL.focus()
 }
 
 //resizes iframe to fit the browser

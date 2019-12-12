@@ -29,14 +29,20 @@ body {
 	background: #c4c4c4;
 }
 #pageURL{
-	width:300px;
-	height:35px;
-	font-size:15px;
+	width: 300px;
+	height: 35px;
+	font-size: 15px;
 }
 #pageFrame{
-	width:100%;
-	height:1000px;
+	width: 100%;
+	height: 1000px;
 }
 #helpText{
-	display:none;
+	display: none;
+}
+#defaultScr {
+	padding: 5%;
+}
+#defaultHdg {
+	color: green;
 }
