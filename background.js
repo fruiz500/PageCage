@@ -8,7 +8,7 @@ function openPage(){
 			chrome.tabs.create({url: 'index.html#' + activeTab.url.split("?")[0]});		//remove query from URL as well
 		}
 		chrome.tabs.remove(activeTab.id);
-		chrome.history.deleteUrl({url: activeTab.url})
+		if(activeTab.url) chrome.history.deleteUrl({url: activeTab.url})
 	});	
 }
 
