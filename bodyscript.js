@@ -69,23 +69,7 @@ window.onload = function() {
 		setTimeout(function(){ msgArea.textContent = "";},3000);
 	});
 
-//this from extension Ignore X-Frame headers, by Guillaume Ryder, Alex Dergachev
-var HEADERS_TO_STRIP_LOWERCASE = [
-  'content-security-policy',
-  'x-frame-options',
-	];
-
-chrome.webRequest.onHeadersReceived.addListener(
-  function(details) {
-    return {
-      responseHeaders: details.responseHeaders.filter(function(header) {
-        return HEADERS_TO_STRIP_LOWERCASE.indexOf(header.name.toLowerCase()) < 0;
-      })
-    };
-  }, {
-    urls: ["<all_urls>"]
-  }, ["blocking", "responseHeaders"]);
-//end of Ignore X-Frame headers code
+//end of Ignore X-Frame headers code. Not active because Chrome Extension Manifest v3 does not allow webRequestBlocking
 
 //to prevent the page from redirecting out
 	window.addEventListener('beforeunload', function (e) {
@@ -100,7 +84,6 @@ chrome.webRequest.onHeadersReceived.addListener(
 	pageResize();
 	
 	pageURL.focus()
-
 }
 
 function makePage(){

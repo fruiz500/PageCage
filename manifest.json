@@ -2,23 +2,26 @@
  "name": "Page Cage",
  "short_name": "Cage",
  "description": "Loads a page inside a frame so it can't be seen by other extensions",
- "version": "0.1.2",
- "manifest_version": 2,
+ "version": "0.1.3",
+ "manifest_version": 3,
  "icons": {
 	"16": "cage-16.png",
 	"48": "cage-48.png",
 	"128": "cage-128.png"
  },
- "content_security_policy": "default-src 'self'; frame-src 'self' https://* http://*",
+ "content_security_policy": {
+  "extension_pages": "default-src 'self'; frame-src 'self' https://* http://*"
+},
  "permissions": [
-   "<all_urls>",
-	"webRequest", "webRequestBlocking",		//these two are for framing pages
 	"contextMenus", "history"
   ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
- "browser_action": {
+ "action": {
    "default_icon": {
 	   "16": "cage-16.png",
        "48": "cage-48.png",

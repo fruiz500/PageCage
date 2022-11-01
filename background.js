@@ -12,15 +12,19 @@ function openPage(){
 	});	
 }
 
-chrome.browserAction.onClicked.addListener(openPage);
+chrome.action.onClicked.addListener(openPage);
 
 //this one for links by right-click
 function openLink(info,tab){
 	if(info.linkUrl) chrome.tabs.create({url: 'index.html#' + info.linkUrl});
 }
 
-chrome.contextMenus.create({
-	title: "Open Link in Cage", 
-	contexts:["selection"], 
-	onclick: openLink
-});
+chrome.contextMenus.onClicked.addListener(openLink);
+
+chrome.runtime.onInstalled.addListener(function(){
+	chrome.contextMenus.create({
+		id: "openInCage",
+		title: "Open Link in Cage", 
+		contexts:["selection"]
+	})
+})
