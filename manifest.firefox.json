@@ -19,7 +19,7 @@
     "<all_urls>"
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"]
   },
  "action": {
    "default_icon": {
@@ -28,5 +28,10 @@
 	   "128": "cage-128.png"
    },
    "default_title": "Cage"
- }
+ },
+ "browser_specific_settings": {
+  "gecko": {
+    "id": "{000d5e03-3093-485a-a0f3-b406fe4558cd}"
+  }
+}
 }
